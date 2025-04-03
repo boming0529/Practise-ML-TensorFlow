@@ -9,12 +9,12 @@ from tensorflow.keras.datasets import mnist
 
 # load data
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
-loaded_model = load_model('my_mnist_model.h5')
+model = load_model('mnist_model_2025_04_04.h5')
 x_test = x_test.reshape(10000, 28*28).astype('float32') / 255
 y_test = to_categorical(y_test, 10)
 
 # predict
-n = 1500
+n = 1200
 inp = x_test[n].reshape(1, 784)
 predict_y = model.predict(inp)
 print(y_test[n])

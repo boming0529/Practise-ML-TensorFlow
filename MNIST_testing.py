@@ -34,7 +34,7 @@ model = Sequential() # container
 # model.add(Dense(128, activation='relu', input_shape=(784,)))
 model.add(Dense(128, activation='relu', input_dim=784))
 # second hidden layer
-model.add(Dense(64, activation='relu'))
+model.add(Dense(128, activation='relu'))
 # third hidden layer
 model.add(Dense(64, activation='relu'))
 # output layer 
@@ -54,7 +54,7 @@ model.compile(optimizer=SGD(learning_rate=0.01),
 model.summary()
 
 # training model
-history = model.fit(x_train, y_train, batch_size=64, epochs=10, validation_split=0.2)
+history = model.fit(x_train, y_train, batch_size=100, epochs=10, validation_split=0.2)
 
 # evaluation model
 test_loss, test_accuracy = model.evaluate(x_test, y_test)
