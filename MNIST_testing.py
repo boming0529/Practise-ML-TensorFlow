@@ -1,6 +1,5 @@
 # import stranded library
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 # import TensorFlow
 from tensorflow.keras.utils import to_categorical # one-hot encoding
@@ -29,7 +28,7 @@ y_test = to_categorical(y_test, 10)
 # check
 print(y_train[n])
 
-model = Sequential()
+model = Sequential() # container
 # design hyperparameter, number of DNN neuron size, number of layer 
 # first hidden layer 
 # model.add(Dense(128, activation='relu', input_shape=(784,)))
@@ -67,6 +66,9 @@ plt.plot(history.history['val_accuracy'], label='validation accuracy')
 plt.legend()
 plt.show()
 
+# save model
+model.save('mnist_model_2025_04_04.h5')
+
 # predict
 n = 2000
 inp = x_test[n].reshape(1, 784)
@@ -74,3 +76,4 @@ predict_y = model.predict(inp)
 print(y_test[n])
 print(np.argmax(predict_y, axis=-1))
 plt.imshow(x_test[n].reshape(28, 28), cmap='Greys')
+plt.show()
