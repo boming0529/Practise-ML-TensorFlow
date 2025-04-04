@@ -15,12 +15,14 @@ from tensorflow.keras.datasets import mnist
 n = 5000
 # x_train[n]
 print(y_train[n])
-plt.imshow(x_train[n], cmap='Greys')
+plt.imshow(1.0-x_train[n], cmap='Greys')
 plt.show()
 
 # prepare data and normalization
 x_train = x_train.reshape(60000, 28*28).astype('float32') / 255
+x_train = 1.0 - x_train
 x_test = x_test.reshape(10000, 28*28).astype('float32') / 255
+x_test = 1.0 - x_test
 # convert to one-hot encoding
 y_train = to_categorical(y_train, 10)
 y_test = to_categorical(y_test, 10)
@@ -67,7 +69,7 @@ plt.legend()
 plt.show()
 
 # save model
-model.save('./model/mnist_model_2025_04_04.h5')
+model.save('./model/inv_mnist_model_2025_04_04.h5')
 
 # predict
 n = 2000
