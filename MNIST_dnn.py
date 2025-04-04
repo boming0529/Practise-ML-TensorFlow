@@ -67,7 +67,7 @@ plt.legend()
 plt.show()
 
 # save model
-model.save('mnist_model_2025_04_04.h5')
+model.save('./model/mnist_model_2025_04_04.h5')
 
 # predict
 n = 2000

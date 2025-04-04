@@ -9,7 +9,7 @@ from tensorflow.keras.datasets import mnist
 
 # load data
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
-model = load_model('mnist_model_2025_04_04.h5')
+model = load_model('./model/mnist_model_2025_04_04.h5')
 x_test = x_test.reshape(10000, 28*28).astype('float32') / 255
 y_test = to_categorical(y_test, 10)
 
