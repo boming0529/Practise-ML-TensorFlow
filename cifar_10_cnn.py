@@ -2,11 +2,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
 # tf.keras
-from tensorflow.keras.datasets import cifar10 # type: ignore
-from tensorflow.keras.utils import to_categorical # type: ignore
-from tensorflow.keras.models import Sequential # type: ignore
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten  # type: ignore
-from tensorflow.keras.optimizers import SGD, Adam # type: ignore
+from keras._tf_keras.keras.datasets import cifar10
+from keras._tf_keras.keras.utils import to_categorical
+from keras._tf_keras.keras.models import Sequential
+from keras._tf_keras.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten
+from keras._tf_keras.keras.optimizers import SGD, Adam
 
 # Data Engineering
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
@@ -88,3 +88,17 @@ model.summary()
 
 model.fit(x_train, y_train, batch_size=100, epochs=20)
 
+model.save('./model/cifar_10_cnn_model_2025_04_05.h5')
+
+# predict
+plt.imshow(x_test[5])
+plt.title(f'label: {y_test[5].argmax()}')
+plt.show()
+
+inp = x_test[5].reshape(1, 32, 32, 3)
+y_predict = model.predict(inp)
+print(f'predict class was : {np.argmax(y_predict, axis=-1)}')
+
+score = model.evaluate(x_test, y_test)
+print(f'loss : {score[0]}')
+print(f'accuracy : {score[1] * 100:.2f}%')
