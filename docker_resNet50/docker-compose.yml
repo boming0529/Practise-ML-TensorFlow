@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  tf_resnet_app:
+    image: tf_resnet_app:latest
+    build:
+      context: ..
+      dockerfile: docker_resNet50/Dockerfile
+    volumes:
+      - ./image:/app/image
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+    # environment:
+    #   - NVIDIA_VISIBLE_DEVICES=all

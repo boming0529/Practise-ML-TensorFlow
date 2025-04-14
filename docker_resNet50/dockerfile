@@ -1,0 +1,24 @@
+FROM python:3.11-slim
+
+# include matplotlib and pillow system dependencies libraries
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    wget \
+    libblas-dev \
+    liblapack-dev \
+    libjpeg-dev \
+    zlib1g-dev && \
+    rm -rf /var/lib/apt/lists/*
+
+# install uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
+
+WORKDIR /app
+
+COPY ./docker_resNet50/requirements.txt ./requirements.txt
+RUN uv pip install --system --no-cache-dir -r requirements.txt
+
+COPY ./ResNet50_Cnn.py ./ResNet50_Cnn.py
+COPY ./tool/ ./tool/
+
+CMD ["python", "ResNet50_Cnn.py"]
