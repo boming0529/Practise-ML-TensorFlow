@@ -5,6 +5,7 @@
         "imshow",
         "meshgrid",
         "mstar",
+        "scatterplot",
         "xlabel",
         "xticklabels",
         "ylabel",
