@@ -3,6 +3,7 @@
         "cmap",
         "figsize",
         "imshow",
+        "meshgrid",
         "mstar",
         "xlabel",
         "xticklabels",
