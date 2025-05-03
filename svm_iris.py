@@ -101,7 +101,7 @@ show_feature(x_data, y_target, x_train, x_test,
 show_feature(x_data, y_target, x_train, x_test,
              y_train, y_predict, clf, 'Sepal')
 
-# Error Plot
+# Error Plot (Petal)
 correct = y_test == y_predict
 plt.scatter(x_test[~correct, 2], x_test[~correct, 3],
             c='red', label='Incorrect', marker='x')
@@ -113,7 +113,7 @@ plt.title('Prediction Results')
 plt.legend()
 plt.show()
 
-
+# Error Plot (Sepal)
 plt.scatter(x_test[~correct, 0], x_test[~correct, 1],
             c='red', label='Incorrect', marker='x')
 plt.scatter(x_test[correct, 0], x_test[correct, 1],
